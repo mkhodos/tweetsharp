@@ -52,6 +52,8 @@ namespace TweetSharp
         private bool? _defaultProfile;
         private string _profileBackgroundImageUrlHttps;
         private string _profileImageUrlHttps;
+        private long? _in_reply_to_user_id;
+        private string _in_reply_to_user_id_str;
         
 #if !Smartphone && !NET20
         [DataMember]
@@ -650,6 +652,44 @@ namespace TweetSharp
 
                 _defaultProfile = value;
                 OnPropertyChanged("IsDefaultProfile");
+            }
+        }
+
+#if !Smartphone && !NET20
+        [DataMember]
+#endif
+        [JsonProperty("in_reply_to_user_id")]
+        public virtual long? in_reply_to_user_id
+        {
+            get { return _in_reply_to_user_id; }
+            set
+            {
+                if (_in_reply_to_user_id == value)
+                {
+                    return;
+                }
+
+                _in_reply_to_user_id = value;
+                OnPropertyChanged("in_reply_to_user_id");
+            }
+        }
+
+#if !Smartphone && !NET20
+        [DataMember]
+#endif
+        [JsonProperty("in_reply_to_user_id_str")]
+        public virtual string in_reply_to_user_id_str
+        {
+            get { return _in_reply_to_user_id_str; }
+            set
+            {
+                if (_in_reply_to_user_id_str == value)
+                {
+                    return;
+                }
+
+                _in_reply_to_user_id_str = value;
+                OnPropertyChanged("in_reply_to_user_id_str");
             }
         }
 
